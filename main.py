@@ -23,7 +23,7 @@ app.add_middleware(
 app = FastAPI()
 
 # Cargar el DataFrame desde el archivo CSV existente
-df = pd.read_csv("bp2\df_completo1.csv")  # Ajusta el nombre del archivo según sea necesario
+df = pd.read_csv("df_completo1.csv")  # Ajusta el nombre del archivo según sea necesario
 
 # Ruta para la raíz
 @app.get("/")
