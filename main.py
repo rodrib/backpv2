@@ -153,6 +153,8 @@ def predecir_cluster(EDAD: int = Query(..., description="Edad del paciente"),
     return {"correlacion_EDAD_DX1": correlacion}
 
 
+
+
 # Ejecutar la aplicación con Uvicorn
 if __name__ == "__main__":
     import uvicorn
