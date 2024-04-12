@@ -143,6 +143,16 @@ def predecir_cluster(RECIDIVA: int, DX1: int, EDAD: int, GRADO1: int, HER21: int
     return {"cluster_predicho": cluster_predicho}
 
 
+@app.get("/api/correlacion")
+def predecir_cluster(EDAD: int = Query(..., description="Edad del paciente"),
+                     DX1: int = Query(..., description="Valor DX1 del paciente")):
+    # Calcula la correlación entre EDAD y DX1 (solo para fines de demostración)
+    correlacion = np.corrcoef([EDAD, DX1])[0, 1]
+
+    # Devuelve la correlación al usuario
+    return {"correlacion_EDAD_DX1": correlacion}
+
+
 # Ejecutar la aplicación con Uvicorn
 if __name__ == "__main__":
     import uvicorn
