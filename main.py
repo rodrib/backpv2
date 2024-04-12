@@ -144,7 +144,7 @@ def predecir_cluster(RECIDIVA: int, DX1: int, EDAD: int, GRADO1: int, HER21: int
 
 
 @app.get("/api/correlacion")
-def predecir_cluster(EDAD: int = Query(..., description="Edad del paciente"),
+def correlacion(EDAD: int = Query(..., description="Edad del paciente"),
                      DX1: int = Query(..., description="Valor DX1 del paciente")):
     # Agregar registros para verificar los parámetros recibidos
     print("EDAD recibida:", EDAD)
