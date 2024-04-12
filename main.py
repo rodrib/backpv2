@@ -118,30 +118,7 @@ def hacer_prediccion(edad: int = Query(...), grado: int = Query(...)):
     return resultado_json
 
 
-from fastapi import FastAPI, Query
-from sklearn.cluster import KMeans
-import numpy as np
 
-# Carga el modelo de clustering preentrenado
-kmeans_model = KMeans(n_clusters=3, random_state=42)  # Por ejemplo, con 3 clusters
-
-# Datos de ejemplo para el modelo de clustering
-X = np.array([[0, 1, 45, 1, 0], [1, 0, 50, 2, 1], [0, 1, 55, 1, 0], [1, 0, 60, 2, 1], [0, 1, 65, 1, 0], [1, 0, 70, 2, 1],
-              [0, 1, 75, 1, 0], [1, 0, 80, 2, 1], [0, 1, 85, 1, 0], [1, 0, 90, 2, 1], [0, 1, 55, 1, 0], [1, 0, 60, 2, 1],
-              [0, 1, 65, 1, 0], [1, 0, 70, 2, 1], [0, 1, 75, 1, 0]])
-
-# Entrena el modelo de clustering con los datos de ejemplo
-kmeans_model.fit(X)
-
-# Define el endpoint para hacer la predicción del cluster
-@app.get("/api/prediccion_cluster")
-def predecir_cluster(RECIDIVA: int = Query(...), DX1: int = Query(...), EDAD: int = Query(...), GRADO1: int = Query(...), HER21: int = Query(...)):
-    # Realiza la predicción del cluster con el modelo de clustering
-    datos_usuario = np.array([[RECIDIVA, DX1, EDAD, GRADO1, HER21]])
-    cluster_predicho = kmeans_model.predict(datos_usuario)[0]
-
-    # Devuelve el cluster predicho al usuario
-    return {"cluster_predicho": cluster_predicho}
 
 
 # Ejecutar la aplicación con Uvicorn
