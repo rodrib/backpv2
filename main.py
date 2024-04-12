@@ -146,8 +146,15 @@ def predecir_cluster(RECIDIVA: int, DX1: int, EDAD: int, GRADO1: int, HER21: int
 @app.get("/api/correlacion")
 def predecir_cluster(EDAD: int = Query(..., description="Edad del paciente"),
                      DX1: int = Query(..., description="Valor DX1 del paciente")):
-    # Calcula la correlación entre EDAD y DX1 (solo para fines de demostración)
+    # Agregar registros para verificar los parámetros recibidos
+    print("EDAD recibida:", EDAD)
+    print("DX1 recibido:", DX1)
+    
+    # Calcula la correlación entre EDAD y DX1
     correlacion = np.corrcoef([EDAD, DX1])[0, 1]
+
+    # Agregar registros para verificar la correlación calculada
+    print("Correlación calculada:", correlacion)
 
     # Devuelve la correlación al usuario
     return {"correlacion_EDAD_DX1": correlacion}
