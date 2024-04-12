@@ -135,7 +135,7 @@ kmeans_model.fit(X)
 
 # Define el endpoint para hacer la predicción del cluster
 @app.get("/api/prediccion_cluster")
-def predecir_cluster(RECIDIVA: int = Query(...), DX1: int = Query(...), EDAD: int = Query(...), GRADO1: int = Query(...), HER21: int = Query(...)):
+def predecir_cluster(RECIDIVA: int, DX1: int, EDAD: int, GRADO1: int, HER21: int):
     # Realiza la predicción del cluster con el modelo de clustering
     datos_usuario = np.array([[RECIDIVA, DX1, EDAD, GRADO1, HER21]])
     cluster_predicho = kmeans_model.predict(datos_usuario)[0]
