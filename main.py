@@ -119,7 +119,7 @@ def hacer_prediccion(edad: int = Query(...), grado: int = Query(...)):
 
 
 ####################
-from sklearn.cluster import KMeans
+""" from sklearn.cluster import KMeans
 import numpy as np
 
 # Carga el modelo de clustering preentrenado
@@ -140,7 +140,7 @@ def predecir_cluster(RECIDIVA: int, DX1: int, EDAD: int, GRADO1: int, HER21: int
     cluster_predicho = kmeans_model.predict(datos_usuario)[0]
 
     # Devuelve el cluster predicho al usuario
-    return {"cluster_predicho": cluster_predicho}
+    return {"cluster_predicho": cluster_predicho} """
 
 
 @app.get("/api/correlacion")
