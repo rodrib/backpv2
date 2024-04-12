@@ -155,12 +155,12 @@ def predecir_cluster(EDAD: int = Query(..., description="Edad del paciente"),
         correlacion = np.corrcoef([EDAD, DX1])[0, 1]
     except Exception as e:
         # Si ocurre un error, registra el error
-        app.logger.error("Error al calcular la correlación: %s", e)
+        #app.logger.error("Error al calcular la correlación: %s", e)
         # Devuelve un mensaje de error al usuario
         raise HTTPException(status_code=500, detail="Error al calcular la correlación")
 
     # Agregar registros para verificar la correlación calculada
-    app.logger.debug("Correlación calculada: %s", correlacion)
+    #app.logger.debug("Correlación calculada: %s", correlacion)
 
     # Devuelve la correlación al usuario
     return {"correlacion_EDAD_DX1": correlacion}
