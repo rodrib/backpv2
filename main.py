@@ -174,7 +174,6 @@ def predecir_cluster(EDAD: int = Query(..., description="Edad del paciente"),
 
 
 
-
 # Ejecutar la aplicación con Uvicorn
 if __name__ == "__main__":
     import uvicorn
