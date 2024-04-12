@@ -144,20 +144,27 @@ def predecir_cluster(RECIDIVA: int, DX1: int, EDAD: int, GRADO1: int, HER21: int
 
 
 @app.get("/api/correlacion")
-def correlacion(EDAD: int = Query(..., description="Edad del paciente"),
+def predecir_cluster(EDAD: int = Query(..., description="Edad del paciente"),
                      DX1: int = Query(..., description="Valor DX1 del paciente")):
     # Agregar registros para verificar los parámetros recibidos
-    print("EDAD recibida:", EDAD)
-    print("DX1 recibido:", DX1)
+    app.logger.debug("EDAD recibida: %s", EDAD)
+    app.logger.debug("DX1 recibido: %s", DX1)
     
-    # Calcula la correlación entre EDAD y DX1
-    correlacion = np.corrcoef([EDAD, DX1])[0, 1]
+    try:
+        # Calcula la correlación entre EDAD y DX1
+        correlacion = np.corrcoef([EDAD, DX1])[0, 1]
+    except Exception as e:
+        # Si ocurre un error, registra el error
+        app.logger.error("Error al calcular la correlación: %s", e)
+        # Devuelve un mensaje de error al usuario
+        raise HTTPException(status_code=500, detail="Error al calcular la correlación")
 
     # Agregar registros para verificar la correlación calculada
-    print("Correlación calculada:", correlacion)
+    app.logger.debug("Correlación calculada: %s", correlacion)
 
     # Devuelve la correlación al usuario
     return {"correlacion_EDAD_DX1": correlacion}
+
 
 
 
