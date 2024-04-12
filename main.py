@@ -147,8 +147,8 @@ def predecir_cluster(RECIDIVA: int, DX1: int, EDAD: int, GRADO1: int, HER21: int
 def predecir_cluster(EDAD: int = Query(..., description="Edad del paciente"),
                      DX1: int = Query(..., description="Valor DX1 del paciente")):
     # Agregar registros para verificar los parámetros recibidos
-    app.logger.debug("EDAD recibida: %s", EDAD)
-    app.logger.debug("DX1 recibido: %s", DX1)
+    #app.logger.debug("EDAD recibida: %s", EDAD)
+    #app.logger.debug("DX1 recibido: %s", DX1)
     
     try:
         # Calcula la correlación entre EDAD y DX1
