@@ -133,8 +133,7 @@ X = np.array([[0, 1, 45, 1, 0], [1, 0, 50, 2, 1], [0, 1, 55, 1, 0], [1, 0, 60, 2
 # Entrena el modelo de clustering con los datos de ejemplo
 kmeans_model.fit(X)
 
-# Define el endpoint para hacer la predicción del cluster
-@app.get("/api/prediccion_cluster")
+@app.post("/api/prediccion_cluster")
 def predecir_cluster(RECIDIVA: int, DX1: int, EDAD: int, GRADO1: int, HER21: int):
     # Realiza la predicción del cluster con el modelo de clustering
     datos_usuario = np.array([[RECIDIVA, DX1, EDAD, GRADO1, HER21]])
